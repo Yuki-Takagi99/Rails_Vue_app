@@ -20,7 +20,7 @@
         <td>{{ e.department }}</td>
         <td>{{ e.gender }}</td>
         <td>
-          <button @click="deleteTarget = e.id; showModal = true">Delete</button>
+          <button class="btn btn-outline-danger" @click="deleteTarget = e.id; showModal = true">Delete</button>
         </td>
       </tr>
       </tbody>
