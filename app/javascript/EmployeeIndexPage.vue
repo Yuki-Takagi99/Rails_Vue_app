@@ -5,26 +5,29 @@
         <li><font color="red">{{ e }}</font></li>
       </ul>
     </div>
-    <table>
+    <table class="table table-sm">
+      <thead class="thead-light">
+        <tr>
+          <th>ID</th>
+          <th>name</th>
+          <th>department</th>
+          <th>gender</th>
+          <th>actions</th>
+        </tr>
+      </thead>
       <tbody>
-      <tr>
-        <th>ID</th>
-        <th>name</th>
-        <th>department</th>
-        <th>gender</th>
-        <th>actions</th>
-      </tr>
-      <tr v-for="e in employees" :key="e.id">
-        <td><router-link :to="{ name: 'EmployeeDetailPage', params: { id: e.id } }">{{ e.id }}</router-link></td>
-        <td>{{ e.name }}</td>
-        <td>{{ e.department }}</td>
-        <td>{{ e.gender }}</td>
-        <td>
-          <button class="btn btn-outline-danger" @click="deleteTarget = e.id; showModal = true">Delete</button>
-        </td>
-      </tr>
+        <tr v-for="e in employees" :key="e.id">
+          <td><router-link :to="{ name: 'EmployeeDetailPage', params: { id: e.id } }">{{ e.id }}</router-link></td>
+          <td>{{ e.name }}</td>
+          <td>{{ e.department }}</td>
+          <td>{{ e.gender }}</td>
+          <td>
+            <button class="btn btn-outline-danger" @click="deleteTarget = e.id; showModal = true">Delete</button>
+          </td>
+        </tr>
       </tbody>
     </table>
+    <router-link :to="{ name: 'EmployeeNewPage' }">New Employee</router-link>
     <modal v-if="showModal" @cancel="showModal = false" @ok="deleteEmployee(); showModal = false;">
       <div slot="body">Are you sure?</div>
     </modal>
